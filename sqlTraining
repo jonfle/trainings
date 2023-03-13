@@ -51,7 +51,7 @@ SET @<NAME> = <VALUE>;
 ##Column Aliases
 - <column> as <alias>
 - Can use math operators in the SELECT statement and then an alias to create the column name
-- Can't use aliases in the WHERE line because it operates before the SELECT line
+- Can't use column aliases in the WHERE line because it operates before the SELECT line
 
 ##Predicates
 - BETWEEN: inclusive range; e.g. BETWEEN 100 AND 200
@@ -63,3 +63,28 @@ SET @<NAME> = <VALUE>;
     - [^] any character except what is in the range
 e.g. WHERE email LIKE 'Jonathan.F%' --> will find every records with email starting with Jonathan.F; anything can come after 'F'
 - IS and IS NOT are used to handle NULLs
+
+#Utilizing Joins
+- One column from each table will be the "seam"
+- Seam is used to match data from one table to the other - you can actually join two or more tables
+
+##Join Syntax
+
+SELECT <COLUMNS> 
+FROM schema.table1 AS t1
+    JOIN schema.table2 AS t2 ON t1.Column = t2.Column; (the last part is the "seam")
+    
+##Inner Joins
+- Most common type of join
+- Joins 2 tables together
+- Returns rows from both sides where both sides match on the seam
+
+##Outer Joins
+- Returns rows from tables even if they don't match the seam
+###FULL
+    - Returns rows from both tables even if they don't match the join statement
+    - e.g. Find customers without orders and orphaned orders
+###LEFT or RIGHT
+    - No difference except in order of tables in FROM clause
+    - Direction points at table to retrieve non-matching rows from
+    - e.g. Find customers who haven't placed orders
