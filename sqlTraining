@@ -3,3 +3,36 @@
 ##Database concepts
 - **Stored procedures** are commands that can be executed to make changes or return data
 - **Functions** are commapnds that can be executed to return data
+- **Constraints** ensure valid values, like allowing only dates *before today* in a column
+- **Primary Keys** are like SSNs. Uniquely identify a record
+- **Foreign Keys** are used to create relationships between tables; refers to the column pointing to the primary key column in the other table
+
+##Relationships
+- One-to-One --> one row in table A refers to one row in table B. Not very common.
+- One-to-Many --> one row in table A refers to many rows in table B. The most common.
+- Many-to-Many --> many rows in table A refers to many rows in table B. Usually needs a middle table, called a "join table"
+
+##DB Design
+- Changing DB design causes headaches. Proper planning is essential, and experience is the best teacher. DBA usually does the design. 
+- Normalization is a good guide for designing tables. It's a guide, not a set of rules.
+    - 1st form: table has no repeating groups
+    - 2nd form: if a column could uniquely identify an item, don't duplicate it
+    - 3rd form: every value must only depend on the key; no calculated values
+    
+##Manipulating Data
+1. Retrieve using *SELECT*
+2. Create using *INSERT*
+3. Modify using *UPDATE*
+4. Delete using *DELETE*
+
+##Result Sets vs. Row Based
+- Don't use row based logic! 
+
+##Variables
+- Variable names must start with @
+- Variable type establishes the data type
+- Also has the value, which is the stored information. Can be NULL. 
+
+DECLARE @<NAME> <DATATYPE>;
+SET @<NAME> = <VALUE>;
+
