@@ -36,3 +36,30 @@
 DECLARE @<NAME> <DATATYPE>;
 SET @<NAME> = <VALUE>;
 
+#Intro to SELECT Statements
+- Schemas are just like folders
+- Best practice is to always specify the schema
+- Treat everything as case-sensitive
+
+- SELECT <columns> --> define what columns you want
+- FROM <tables>
+- WHERE <conditions>
+- GROUP BY <columns> --> aggregates
+- HAVING <conditions> --> allows you to eliminate groups
+- ORDER BY <columns>
+
+##Column Aliases
+- <column> as <alias>
+- Can use math operators in the SELECT statement and then an alias to create the column name
+- Can't use aliases in the WHERE line because it operates before the SELECT line
+
+##Predicates
+- BETWEEN: inclusive range; e.g. BETWEEN 100 AND 200
+- [NOT] IN: in a list of values
+- LIKE: used to query strings using wild cards. 
+    - % zero or more characters
+    - _ one character
+    - [] used for a range
+    - [^] any character except what is in the range
+e.g. WHERE email LIKE 'Jonathan.F%' --> will find every records with email starting with Jonathan.F; anything can come after 'F'
+- IS and IS NOT are used to handle NULLs
