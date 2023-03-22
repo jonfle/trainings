@@ -1,0 +1,22 @@
+#Introduction and Fundamentals
+
+###Views
+Views are lists of tickets that are built with rules, e.g. unassigned tickets, my tickets, poor satisfaction tickets
+
+##Macros
+Macros can be set up to send pre-written responses to customers
+
+##Triggers
+Act on tickets automatically based on an event, e.g. the first "we received your message" response
+
+##Automations
+Like triggers, but time-based, e.g. a follow-up the day after the ticket is closed
+
+##Groups 
+A group in Zendesk is a collection of team members created based on meaningful attributes relevant to the workflow. Groups might be based on the type of tickets an agent will handle. The primary function of a group is ticket assignment. Every agent must be a member of at least one group.
+
+#Questions
+- How is the 'customers' page populated with users? Same question for the 'organizations' page
+- What add-ons do you recommend? 
+    - Curious about how to auto-generate ADO tickets based on a Zendesk tag
+- What macros do we need?
