@@ -90,3 +90,77 @@ FROM schema.table1 AS t1
     - No difference except in order of tables in FROM clause
     - Direction points at table to retrieve non-matching rows from
     - e.g. Find customers who haven't placed orders
+
+#Subqueries
+Subqueries are queries within queries
+- Breakdown complex logic
+- Simplify reading
+- "Sneak in" operations that otherwise wouldn't be allowed
+- Focus on good, readable code first. Then SQL can re-write in the fastest way
+
+##SELECT Line
+- Must return a single (scalar) value
+
+e.g.
+--Show difference between product price and average product price
+Select Name
+, List Price - (select avg(ListPrice) from Production.Product) differenceFromAverage
+From Production.Product;
+
+##FROM Line
+- Must alias the result
+
+e.g.
+--Show list price compared to the average for that subcategory
+Select p.name
+, p.ListPrice - ap.averagelistprice as differencefromsubcategoryaverage
+FROM production.product p
+    inner join (select productsubcategoryID
+    , avg(listPrice) as AverageListPrice
+    FROM Production.product
+    group by productsubcategoryID) as ap
+on p.productsubcategoryid = ap.productsubcategoryid;
+
+##WHERE Line
+- using predicates:
+    - IN: confirms column value exists in subquery; similar to inner join
+    - EXISTS: returns true if subquery returns values
+    - ALL: compares column value to all items returned by subquery
+    - ANY or SOME: identical; compares column value to any of the subquery 
+    
+#UNION Statements
+- Each query must contain same number of columns
+- Data types must be compatible
+- First query sets column names of result set
+- By default, UNION queries are DISTINCT; use UNION ALL to include duplicates
+
+#Aggregating data
+- NULL values are ignored
+- if you hear people say "by", it's a good clue to use GROUP BY e.g. "sales by region"
+- HAVING filters groups - so we can make sure entire groups meet particular criteria e.g. "customer zip codes that have spent $10k"
+- HAVING filters groups while WHERE filters rows
+
+##ROLLUP
+- ROLLUP provides totals using orders of GROUP BY
+- CUBE does the same but for even more groupings - probably not useful because you lose control, but it does a lot of work for you
+
+##Common Table Expressions (CTE)
+###SYNTAX
+
+WITH <name> [columns]
+AS (select....)
+---then use that as a normal table
+
+- PIVOT statements can turn rows into columns, like a pivot table
+
+#Functions
+- Avoid passing columns into functions in SELECT statements, especially in the WHERE line
+
+#Optimizations
+- Indexes: think of them like how phonebooks sort data by last name
+    - Generally lead to faster queries
+    - Indexes need to be kept up to date
+        When data is deleted, the indexes aren't repaired
+- Clustered index is the order which the data in the table is stored; like a page number in a book
+- Non clustered index is a copy of the data sorted for queries; like the keywords in the 'index' portion of a text book, which lead you to the original content(s)
+
