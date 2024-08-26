@@ -1,0 +1,16 @@
+# Notes
+- Two paths: adaptive (smaller) vs. transformational (larger)
+- Adaptive is a feature-level change that could involve a wiki/SOP being sent out or internal comms to engrs and stakeholders
+- Transformational changes have a larger scope than adaptive changes, impact more users, and often stress business continuity
+- Consider the number of users that will be impacted by the release, the degree to which user journeys will change, and what might happen from a business continuity perspective without any change management when trying to decide
+- Best practices:
+    - Be data-driven with telemetry and readiness surveys and use data visualizations
+    - Know the user. Have office hours and/or training sessions
+    - Overcommuinicate. Four key variables add to or detract from a communication. Audience, Purpose, Media, and Timing. Nail all 4 for a good comm.
+    - Celebrate wins!
+- Make sure you can keep track of your comms. A CRM application is a good tool here to avoid missing users who should be receiving an update
+- Always have a rollback plan at the ready
+
+
+# Questions
+- What's a good CRM to use for the email tracking on comms?
