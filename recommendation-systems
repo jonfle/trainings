@@ -1,0 +1,37 @@
+[Training](https://www.linkedin.com/learning/recommendation-systems-a-practical-introduction/why-recommendation-systems?u=26137906)
+
+# Data Prep
+- Three types of data
+1. User
+2. Item
+3. Interaction or Feedback
+
+- "explicit" feedback is most valuable but most costly for the user to give. It's something like "this was good"
+- "implicit" feedback is like transaction logs. Actions. Not disruptive to users. But can't give negative feedback this way and it's hard to interpret
+- "Features" are descriptors. e.g. User Age is a feature. Item Price is a feature.
+
+- Generally, 80% of data set should be training, 20% for testing (if you're doing a random split)
+- At times, chronological split make more sense to predict in terms of time
+- Stratified split is used when we want the same proportion of users and items in the two sets
+
+- **What types of data about Accounts do we use? What other features about accounts would allow recos to be more "personalized"?**
+  - How often rep visits?
+  - What are other things M360 knows about that Algo does not?
+
+# Modeling
+The Collaborative Filtering problem is to fill in the missing cells in this R Matrix
+- R matrix
+  - Rows we list all users
+  - Columns we list all items
+It's sparse - it's missing interests. Our job is to fill it in.
+
+There are many techniques to build a strong reco system.
+1. Memory Method
+- create two matrixes: 1. affinity of users toward items. Can add factors and weight interactions (e.g. click vs. buy is weighed differently) 2. item similarity matrix 
+- if you multiply these two, then you know the affinity of users toward items that they haven't interacted with 
+
+## Evaluation
+- Rating: how accurate a recommender is at predicting the exact interaction provied by the user
+- Ranking: how relevant recos are for users
+- Diversity: how novel, diverse, or surprising the recos are
+
