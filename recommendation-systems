@@ -35,3 +35,38 @@ There are many techniques to build a strong reco system.
 - Ranking: how relevant recos are for users
 - Diversity: how novel, diverse, or surprising the recos are
 
+# Deployment
+Three architectures are used:
+1. Batch: a. Load data into a compute (like DBX). b. Try different algos, find the one that scores the best, c. store the table of output in a database, finally d. query the DB from the frontend with any filters you want 
+2. Real-time: only difference vs. batch is storage. Here, you deploy the ML so that it scores in real-time and shows output to the user right then and there. 
+
+So batch is simpler and provides the fastest request-response time, but it's "staler" than real-time, since recos won't change based on the live actions of the user.
+
+3. Use a combo of both - real-time doesn't generate recos, but it just re-prioritizes the ones in the DB based on the live actions of the user.
+
+## Evaluation in production
+1. Offline Metrics
+- ranking, rating, and diversity metrics
+2. Online (business) metrics
+- conversion rate, revenue per user, etc.
+
+A good performance in Offline Metrics doesn't translate into Online metrics, necessarily. A/B tests is a good way to evaluate Online metrics. 
+
+- Build a strong pipeline that makes deploying easy
+- Start with an A/A test - result should be no difference. If there's a significant difference, then evaluate your tooling and test methodology. 
+
+# MLOps
+Testing is like an immune system for your recommender. You can generally have 2 workflows:
+- PR Gate: tests run on each PR. Should be quick. Objective is to make sure it's not breaking anything 
+- Nightly builds: Async, keeps your main branch clean
+
+Types of tests
+1. Data validation (available, has the correct size)
+2. Unit tests (code runs correctly - PR gate)
+3. Functional tests 
+4. Integration tests (interaction between different components is correct)
+5. Smoke tests
+6. Performance tests (memory, time, etc.)
+7. Responsible tests (are we acting ethically)
+8. Security tests
+9. Regression tests
